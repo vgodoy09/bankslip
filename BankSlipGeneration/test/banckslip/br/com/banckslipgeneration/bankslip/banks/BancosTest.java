@@ -1,5 +1,7 @@
 package br.com.banckslipgeneration.bankslip.banks;
 
+import org.hamcrest.Matchers;
+import org.junit.Assert;
 import org.junit.Test;
 
 import br.com.banckslipgeneration.bankslip.Banco;
@@ -15,8 +17,8 @@ public class BancosTest {
 		Banco brasil = Bancos.getPorNumero("001");
 		Banco itau = Bancos.getPorNumero("341");
 
-//		Assert.assertThat(brasil, Matchers.instanceOf(BancoDoBrasil.class));
-//		Assert.assertThat(itau, Matchers.instanceOf(Itau.class));
+		Assert.assertThat(brasil, Matchers.instanceOf(BancoDoBrasil.class));
+		Assert.assertThat(itau, Matchers.instanceOf(Itau.class));
 	}
 	
 	@Test(expected=BancoNaoSuportadoException.class)
