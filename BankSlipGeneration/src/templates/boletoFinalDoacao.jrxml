@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.4.3.final using JasperReports Library version 6.4.3  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="be0fcb70-bd2d-4256-97f7-79b2397bc68f">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="be0fcb70-bd2d-4256-97f7-79b2397bc68f">
 	<property name="ireport.zoom" value="1.815000000000002"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -138,15 +138,15 @@
 		<fieldDescription><![CDATA[carteira]]></fieldDescription>
 	</field>
 	<field name="customizado" class="java.lang.String"/>
-	<field name="numeroBanco" class="java.lang.String"/>
 	<field name="numeroParcela" class="java.lang.Integer"/>
 	<field name="image" class="java.lang.String"/>
-	<field name="totalParcela" class="java.lang.String"/>
+	<field name="totalParcela" class="java.lang.Integer"/>
 	<field name="mensagemExtra" class="java.lang.String"/>
-	<field name="company" class="java.lang.String"/>
-	<field name="angelNum" class="java.lang.String"/>
+	<field name="company" class="java.lang.Integer"/>
+	<field name="angelNum" class="java.lang.Integer"/>
 	<field name="angelValue" class="java.lang.Double"/>
 	<field name="valueResponsible" class="java.lang.Double"/>
+	<field name="numeroBanco" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -801,7 +801,7 @@
 			</line>
 			<image scaleImage="FillFrame" isLazy="true" onErrorType="Blank">
 				<reportElement x="24" y="18" width="115" height="22" uuid="88d59b16-92d5-4a41-b17b-0f6626e7f12c"/>
-				<imageExpression><![CDATA[$F{numeroBanco}+".png"]]></imageExpression>
+				<imageExpression><![CDATA[$F{numeroFormatadoComDigito} + ".png"]]></imageExpression>
 			</image>
 			<image scaleImage="FillFrame" isLazy="true" onErrorType="Blank">
 				<reportElement x="24" y="524" width="115" height="22" uuid="44e8ec65-afe4-4974-b095-205f280bdfc6"/>
@@ -969,7 +969,7 @@
 					<font size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($F{quantidadeDeMoeda} == 0.0 ? "" :  $F{quantidadeDeMoeda})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($F{quantidadeDeMoeda} == new BigDecimal(0.0) ? "" :  $F{quantidadeDeMoeda})]]></textFieldExpression>
 			</textField>
 			<textField pattern="" isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="28" y="637" width="397" height="8" forecolor="#000000" backcolor="#FFFFFF" uuid="7650f2ea-434d-408a-a947-9e977c062ac0"/>
