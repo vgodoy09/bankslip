@@ -10,11 +10,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.com.bankshipgeneration.bankship.Boleto;
-import br.com.bankshipgeneration.bankship.facade.Facade;
-import br.com.bankshipgeneration.bankship.facade.FacadeSystem;
+import br.com.bankslipgeneration.bankslip.Boleto;
+import br.com.bankslipgeneration.bankslip.facade.Facade;
+import br.com.bankslipgeneration.bankslip.facade.FacadeSystem;
 
-@Path("/bankship")
+@Path("/bankslip")
 public class BankShipService {
 
 	@PostConstruct
@@ -26,10 +26,10 @@ public class BankShipService {
 	@Path("/generation")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public byte[] generationBankship(List<Object[]> list) {
+	public Object[] generationBankslip(List<Object[]> list) {
 		Facade fc = new FacadeSystem();
 		List<Boleto> listBankShip = new ArrayList<Boleto>();
-		list.stream().forEach(o -> listBankShip.add(fc.getBankShip(o)));
-		return fc.getBankShipInByte(listBankShip);
+		list.stream().forEach(o -> listBankShip.add(fc.getBankSlip(o)));
+		return new Object[] {fc.getBankSlipInByte(listBankShip)};
 	}
 }
